@@ -63,7 +63,7 @@ def generate_gradcam(model, img_array):
     grads = tf.abs(grads)
     saliency = tf.reduce_max(grads, axis=-1)[0].numpy()
     
-    saliency = saliency / (saliency.max() + 1e-8)
+    saliency = np.power(saliency / (saliency.max() + 1e-8), 0.3)
     saliency = np.uint8(255 * saliency)
     heatmap_color = cv2.applyColorMap(saliency, cv2.COLORMAP_JET)
     
