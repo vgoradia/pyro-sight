@@ -7,6 +7,37 @@ import cv2
 
 st.set_page_config(page_title="PyroSight", page_icon="🔥", layout="wide")
 
+st.markdown("""
+    <style>
+    .block-container { padding-top: 2rem; }
+    .stAlert {
+        border-radius: 10px;
+        font-size: 1.1rem;
+        font-weight: 600;
+    }
+    .stFileUploader {
+        border-radius: 10px;
+    }
+    h3 {
+        color: #ff6b35;
+        border-bottom: 2px solid #ff6b35;
+        padding-bottom: 0.3rem;
+        margin-top: 2rem;
+    }
+    .stSpinner {
+        color: #ff6b35;
+    }
+    .stInfo {
+        background-color: #1e2130;
+        border-left: 4px solid #ff6b35;
+        border-radius: 8px;
+        font-size: 1rem;
+        line-height: 1.6;
+    }
+    </style>
+""", unsafe_allow_html=True)
+
+
 st.title("🔥 PyroSight")
 st.write("CNN-powered wildfire detection system trained on satellite imagery. Upload an image for instant fire detection.")
 
@@ -109,5 +140,4 @@ if uploaded_file is not None:
     st.info(explanation)
 
     st.caption("PyroSight uses a CNN trained on 30,000+ satellite images getting 97.6 percent accuracy.")
-    
     
