@@ -43,7 +43,9 @@ st.write("CNN-powered wildfire detection system trained on satellite imagery. Up
 
 @st.cache_resource
 def load_model():
-    model = tf.keras.models.load_model("pyrosight_model.keras")
+    from huggingface_hub import hf_hub_download
+    model_path = hf_hub_download(repo_id="vgoradia/PyroSight", filename="pyrosight_model.keras")
+    model = tf.keras.models.load_model(model_path)
     _ = model(np.zeros((1, 150, 150, 3)))
     return model
 
