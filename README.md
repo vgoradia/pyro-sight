@@ -62,12 +62,13 @@ Upload any satellite image from the test set or a real wildfire region and PyroS
 ---
 
 ## Project Structure
+```
 pyro-sight/
 ├── app.py              # Main Streamlit app
 ├── train.py            # CNN training script
 ├── requirements.txt    # Dependencies
 └── README.md
-
+```
 ---
 
 Built by Veer Goradia
