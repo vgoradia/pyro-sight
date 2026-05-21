@@ -39,6 +39,34 @@ def generate_gradcam(model, img_array):
     
     return superimposed
 
+import anthropic
+
+def generate_explanation(fire_prob, no_fire_prob):
+    import os
+    client = anthropic.Anthropic(api_key=os.environ.get("ANTHROPIC_API_KEY"))
+    
+    if fire_prob > 50:
+        status = f"wildfire detected with {fire_prob:.1f}% confidence"
+    else:
+        status = f"no wildfire detected, {no_fire_prob:.1f}% confidence it is clear"
+    
+    message = client.messages.create(
+        model="claude-sonnet-4-20250514",
+        max_tokens=300,
+        messages=[{
+            "role": "user",
+            "content": f"""You are an AI wildfire detection assistant. A CNN model analyzed a satellite image and returned: {status}.
+
+Write a 3-sentence plain English explanation that:
+1. States what was detected and the confidence level
+2. Explains what this means in practical terms for emergency responders
+3. Gives a brief recommendation
+
+Keep it professional, clear, and concise."""
+        }]
+    )
+    return message.content[0].text
+
 uploaded_file = st.file_uploader("Upload Satellite Image", type=["jpg", "jpeg", "png"])
 
 if uploaded_file is not None:
@@ -75,4 +103,11 @@ if uploaded_file is not None:
     gradcam_pil = Image.fromarray(cv2.cvtColor(gradcam_img, cv2.COLOR_BGR2RGB))
     st.image(gradcam_pil, caption="AI Attention Heatmap", width=400)
 
-    st.caption("PyroSight uses a CNN trained on 30,000+ satellite images achieving 97.6% test accuracy.")
+    st.markdown("### AI Analysis")
+    with st.spinner("Generating your analysis..."):
+        explanation = generate_explanation(fire_prob, no_fire_prob)
+    st.info(explanation)
+
+    st.caption("PyroSight uses a CNN trained on 30,000+ satellite images getting 97.6 percent accuracy.")
+    
+    
