@@ -19,7 +19,7 @@ Wildfires are one of the most destructive climate disasters on the planet and ea
 - **97.6% Test Accuracy** — trained on 30,000+ labeled satellite images across wildfire and non-wildfire classes
 - **Real-Time Detection** — upload any satellite image and get an instant classification with confidence score
 - **Saliency Heatmap** — visual overlay showing which regions of the image triggered the detection
-- **AI Analysis** — Claude AI generates a plain English explanation of the result with recommendations for emergency responders
+- **AI Analysis** — AI using Claude API generates a plain English explanation of the result with recommendations for emergency responders
 - **Confidence Chart** — interactive bar chart showing fire vs no-fire probability
 
 ---
