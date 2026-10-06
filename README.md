@@ -2,9 +2,9 @@
 
 A CNN-powered wildfire detection system trained on 30,000+ satellite images, achieving 97.6% test accuracy — built with Python, TensorFlow, OpenCV, Streamlit, and Claude API.
 
-🔗 **Live Demo:** https://pyro-sight-gfptqzhfg6q7n96b7cqnaf.streamlit.app
+**Live Demo:** https://pyro-sight-gfptqzhfg6q7n96b7cqnaf.streamlit.app
 
-🤗 **Model:** https://huggingface.co/vgoradia/PyroSight
+**Model:** https://huggingface.co/vgoradia/PyroSight
 
 ---
 
