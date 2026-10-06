@@ -1,4 +1,4 @@
-# 🔥 PyroSight
+# PyroSight
 
 A CNN-powered wildfire detection system trained on 30,000+ satellite images, achieving 97.6% test accuracy — built with Python, TensorFlow, OpenCV, Streamlit, and Claude API.
 
